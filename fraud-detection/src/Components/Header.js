@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 class Header extends Component {
   render() {
     return (
-      <div id='header'>
-        <nav className="navbar navbar-dark bg-light">
-          <h1>Fraud Detection</h1>
-        </nav>
-      </div>
+        <div class="jumbotron">
+          <h1>Fraud Detection Case Study</h1>
+          <p>A dashboard for investigators to use which helps them identify new events that are worthy of investigation for fraud. </p>
+        </div>
     );
   }
 }
