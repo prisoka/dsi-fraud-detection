@@ -3,15 +3,12 @@ import Header from './Components/Header'
 import EventsList from './Components/EventsList'
 import Footer from './Components/Footer'
 import EventsListChart from './Components/EventsListChart'
+import Modal from './Components/Modal'
 
 class App extends Component {
   state = {
-    events: []
-    // events: [
-    //   {id: 1, event: {name: "testing event 1", ingest_time_ms: '07/25/2018', fraud_probability: 0}},
-    //   {id: 2, event: {name: "testing event 2", ingest_time_ms: '07/25/2018', fraud_probability: 1}},
-    //   {id: 3, event: {name: "testing event 3", ingest_time_ms: '07/25/2018', fraud_probability: 0.3}},
-    // ]
+    events: [],
+    selectedEvent: null
   }
 
   // AJAX to initally set state:
@@ -29,15 +26,23 @@ class App extends Component {
     this.setState({events})
   }
 
+  onclick = (event) => {
+    console.log("onclick app.js")
+    this.setState({
+      selectedEvent: event
+    })
+  }
+
   render() {
-    const {events} = this.state;
+    const {events, selectedEvent} = this.state;
 
     return (
       <div className="App">
         <Header />
         <EventsListChart />
-        <EventsList events={events}/>
+        <EventsList events={events} onclick={(event) => this.onclick(event)}/>
         <Footer />
+        <Modal event={selectedEvent}/>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import SingleEvent from './SingleEvent';
 class EventsList extends Component {
   render() {
     console.log(this.props);
-    const { events } = this.props;
+    const { events, onclick } = this.props;
 
     return (
       <div className="container">
@@ -18,7 +18,7 @@ class EventsList extends Component {
             </div>
           </div>
           {events.map((event, i) => {
-            return <SingleEvent key={i} event={event} />;
+            return <SingleEvent key={i} event={event} onclick={(event) => onclick(event)}/>;
           })}
         </div>
       </div>
